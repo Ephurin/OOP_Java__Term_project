@@ -9,4 +9,16 @@ public class Admin extends User{
         super(Name, UserName, password);
         this.setRole("Teacher");
     }
+
+    public void createQuiz(){
+
+    }
+
+    public void deleteQuiz(){
+
+    }
+
+    public void deleteUser(){
+        
+    }
 }
