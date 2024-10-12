@@ -21,11 +21,11 @@ public class Student extends User{
         this.school = school;
     }
 
-    public void takeQuiz(){
+    public void takeQuestion(){
 
     }
 
-    public void takeTest(){
+    public void takeQuiz(){
 
     }
 }

@@ -10,11 +10,23 @@ public class Admin extends User{
         this.setRole("Teacher");
     }
 
+    public void createQuestion(){
+
+    }
+
+    public void deleteQuestion(){
+
+    }
+
     public void createQuiz(){
 
     }
 
     public void deleteQuiz(){
+
+    }
+
+    public void createUser(){
 
     }
 
