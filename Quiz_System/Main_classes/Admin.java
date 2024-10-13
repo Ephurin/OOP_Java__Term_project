@@ -9,7 +9,8 @@ public class Admin extends User{
         super(Name, UserName, password);
         this.setRole("Teacher");
     }
-
+    
+    // Admin specific methods
     public void createQuestion(){
 
     }

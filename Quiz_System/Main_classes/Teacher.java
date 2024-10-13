@@ -32,6 +32,7 @@ public class Teacher extends User{
         this.subject = subject;
     }
 
+    // Teacher specific methods
     public void createQuestion(){
 
     }

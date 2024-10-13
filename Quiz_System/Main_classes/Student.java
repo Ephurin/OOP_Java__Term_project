@@ -13,14 +13,17 @@ public class Student extends User{
         this.school = school;
     }
 
+    //Getters
     public String getSchool(){
         return this.school;
     }
 
+    //Setters
     public void setSchool(String school){
         this.school = school;
-    }
+    }   
 
+    // Student specific methods
     public void takeQuestion(){
 
     }
