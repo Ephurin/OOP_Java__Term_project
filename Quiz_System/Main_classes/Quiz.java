@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
-    private String Quiz_title;
+    private String Quiz_ID, Quiz_title;
     private List<Question> Questions;
     private int Quiz_numberOfQuestions;
 
@@ -24,6 +24,10 @@ public class Quiz {
     }
 
     // getters
+    public String getQuiz_ID(){
+        return this.Quiz_ID;
+    }
+
     public String getQuiz_title(){
         return this.Quiz_title;
     }
@@ -37,6 +41,10 @@ public class Quiz {
     }
 
     // setters
+    public void setQuiz_ID(String Quiz_ID){
+        this.Quiz_ID = Quiz_ID;
+    }
+
     public void setQuiz_title(String Quiz_title){
         this.Quiz_title = Quiz_title;
     }
