@@ -1,20 +1,20 @@
 package Quiz_System.Main_classes;
 
 public class Score {
-    private int score, rightAnswers, wrongAnswers;
+    private int score, correctAnswers, wrongAnswers;
     private String Quiz_ID, Student_ID;
 
     Score(){
         this.score = 0;
-        this.rightAnswers = 0;
+        this.correctAnswers = 0;
         this.wrongAnswers = 0;
         this.Quiz_ID = "";
         this.Student_ID = "";
     }
 
-    Score(int score, int rightAnswers, int wrongAnswers, String Quiz_ID, String Student_ID){
+    Score(int score, int correctAnswers, int wrongAnswers, String Quiz_ID, String Student_ID){
         this.score = score;
-        this.rightAnswers = rightAnswers;
+        this.correctAnswers = correctAnswers;
         this.wrongAnswers = wrongAnswers;
         this.Quiz_ID = Quiz_ID;
         this.Student_ID = Student_ID;
@@ -26,8 +26,8 @@ public class Score {
         return this.score;
     }
 
-    public int getRightAnswers(){
-        return this.rightAnswers;
+    public int getCorrectAnswers(){
+        return this.correctAnswers;
     }
 
     public int getWrongAnswers(){
@@ -48,8 +48,8 @@ public class Score {
         this.score = score;
     }
 
-    public void setRightAnswers(int rightAnswers){
-        this.rightAnswers = rightAnswers;
+    public void setCorrectAnswers(int rightAnswers){
+        this.correctAnswers = rightAnswers;
     }
 
     public void setWrongAnswers(int wrongAnswers){
@@ -63,5 +63,5 @@ public class Score {
     public void setStudent_ID(String Student_ID){
         this.Student_ID = Student_ID;
     }
-    
+
 }
