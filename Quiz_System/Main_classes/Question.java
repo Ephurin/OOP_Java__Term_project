@@ -6,11 +6,11 @@ public class Question {
     private int Question_numberOfOptions;
 
     Question(){
-        this.Question_numberOfOptions = 4;  // Default number of options
-        this.Question_title = "";
-        this.Question_type = "";
-        this.Question_answer = "";
-        this.Question_options = new String[this.Question_numberOfOptions];
+        this.setQuestion_numberOfOptions(4); // default number of options 
+        this.setQuestion_title("");
+        this.setQuestion_type("");
+        this.setQuestion_answer("");
+        this.setQuestion_options(new String[4]);
     }
 
     Question(String Question_title, String Question_type, String Question_answer,int Question_numberOfOptions, String[] Question_options){
