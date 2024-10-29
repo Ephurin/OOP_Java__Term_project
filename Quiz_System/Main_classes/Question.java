@@ -14,14 +14,11 @@ public class Question {
     }
 
     Question(String Question_title, String Question_type, String Question_answer,int Question_numberOfOptions, String[] Question_options){
-        this.Question_numberOfOptions = Question_numberOfOptions;  
-        this.Question_title = Question_title;
-        this.Question_type = Question_type;
-        this.Question_answer = Question_answer;
-        this.Question_options = new String[this.Question_numberOfOptions];
-        for(int i = 0; i < this.Question_numberOfOptions; i++){
-            this.Question_options[i] = Question_options[i];
-        }
+        this.setQuestion_numberOfOptions(Question_numberOfOptions);  
+        this.setQuestion_title(Question_title);
+        this.setQuestion_type(Question_type);
+        this.setQuestion_answer(Question_answer);
+        this.setQuestion_options(Question_options);
     }
 
     // getters

@@ -6,9 +6,9 @@ public class User {
 
     User(){
         this.UserID = String.format("USID%04d", id++);
-        this.Name = "";
-        this.UserName = "";
-        this.password = "";
+        this.setName("");
+        this.setUserName("");
+        this.setPassword("");
         if (id >= 9999) id = 1;
     }
 
@@ -41,6 +41,10 @@ public class User {
     }
 
     //Setters
+    public void setUserId(String UserID){
+        this.UserID = UserID;
+    }
+
     public void setName(String Name){
         this.Name = Name;
     }

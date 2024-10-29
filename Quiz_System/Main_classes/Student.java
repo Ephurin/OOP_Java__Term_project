@@ -11,8 +11,8 @@ public class Student extends User{
     Student(String Name, String UserName, String password, String school, int Grade_Level){
         super(Name, UserName, password);
         this.setRole("Student");
-        this.school = school;
-        this.Grade_Level = Grade_Level;
+        this.setSchool(school);
+        this.setGrade_Level(Grade_Level);
     }
 
     //Getters

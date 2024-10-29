@@ -10,8 +10,8 @@ public class Teacher extends User{
     Teacher(String Name, String UserName, String password, String school, String subject){
         super(Name, UserName, password);
         this.setRole("Teacher");
-        this.school = school;
-        this.subject = subject;
+        this.setSchool(school);
+        this.setSubject(subject);
     }
     
     //Getters

@@ -5,19 +5,19 @@ public class Score {
     private String Quiz_ID, Student_ID;
 
     Score(){
-        this.score = 0;
-        this.correctAnswers = 0;
-        this.wrongAnswers = 0;
-        this.Quiz_ID = "";
-        this.Student_ID = "";
+        this.setScore(0);
+        this.setCorrectAnswers(0);
+        this.setWrongAnswers(0);
+        this.setQuiz_ID("");
+        this.setStudent_ID("");
     }
 
     Score(int score, int correctAnswers, int wrongAnswers, String Quiz_ID, String Student_ID){
-        this.score = score;
-        this.correctAnswers = correctAnswers;
-        this.wrongAnswers = wrongAnswers;
-        this.Quiz_ID = Quiz_ID;
-        this.Student_ID = Student_ID;
+        this.setScore(score);
+        this.setCorrectAnswers(correctAnswers);
+        this.setWrongAnswers(wrongAnswers);
+        this.setQuiz_ID(Quiz_ID);
+        this.setStudent_ID(Student_ID);
     }
 
     // getters
