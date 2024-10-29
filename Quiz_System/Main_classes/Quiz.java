@@ -9,18 +9,15 @@ public class Quiz {
     private int Quiz_numberOfQuestions;
 
     Quiz(){
-        this.Quiz_title = "";
-        this.Quiz_numberOfQuestions = 0;
-        this.Questions = new ArrayList<Question>();
+        this.setQuiz_title("");
+        this.setQuiz_numberOfQuestions(0);
+        this.setQuestions(new ArrayList<Question>());
     }
 
     Quiz(String Quiz_title, int Quiz_numberOfQuestions, List<Question> Questions){
-        this.Quiz_title = Quiz_title;
-        this.Quiz_numberOfQuestions = Quiz_numberOfQuestions;
-        this.Questions = new ArrayList<Question>();
-        for(int i = 0; i < this.Quiz_numberOfQuestions; i++){
-            this.Questions.add(Questions.get(i));
-        }
+        this.setQuiz_title(Quiz_title);
+        this.setQuiz_numberOfQuestions(Quiz_numberOfQuestions);
+        this.setQuestions(Questions);
     }
 
     // getters
