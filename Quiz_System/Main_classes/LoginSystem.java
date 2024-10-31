@@ -9,17 +9,14 @@ public class LoginSystem {
         users = new ArrayList<>();
     }
 
-    public void addUser(String username, String password) {
-        users.add(new User(username, password));
+    public void addUser(User user) {
+        users.add(user);
     }
 
     public String login(String username, String password) {
-        for (User user : users) {
-            if (user.getUsername().equals(username) && user.verifyPassword(password)) {
-                return "Login successful";
-            }
-        }
-        return "Invalid username or password";
+        return "";
     }
 }
+
+
 
