@@ -7,7 +7,7 @@ public class Admin extends User{
 
     Admin(String Name, String UserName, String password){
         super(Name, UserName, password);
-        this.setRole("Teacher");
+        this.setRole("Admin");
     }
     
     // Admin specific methods
