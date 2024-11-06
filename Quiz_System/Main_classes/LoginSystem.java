@@ -16,6 +16,27 @@ public class LoginSystem {
     public String login(String username, String password) {
         return "";
     }
+
+    public void logout() {
+    }
+
+    public void changePassword(String username, String oldPassword, String newPassword) {
+    }
+
+    public void changeUsername(String oldUsername, String newUsername) {
+    }
+
+    public void deleteUser(String username) {
+    }
+
+    public void findUser(String username) {
+    }
+
+    public void findQuiz(String quizName) {
+    }
+
+    public void findQuestion(String question) {
+    }
 }
 
 
