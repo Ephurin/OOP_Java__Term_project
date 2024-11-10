@@ -1,68 +1,34 @@
 package Quiz_System.Main_classes;
 
-public class Question {
+public abstract class Question{
     private String Question_title, Question_type, Question_answer;
-    private String[] Question_options;
-    private int Question_numberOfOptions;
 
+    // constructors
     Question(){
-        this.setQuestion_numberOfOptions(4); // default number of options 
         this.setQuestion_title("");
         this.setQuestion_type("");
         this.setQuestion_answer("");
-        this.setQuestion_options(new String[4]);
     }
 
-    Question(String Question_title, String Question_type, String Question_answer,int Question_numberOfOptions, String[] Question_options){
-        this.setQuestion_numberOfOptions(Question_numberOfOptions);  
+    Question(String Question_title, String Question_type, String Question_answer){
         this.setQuestion_title(Question_title);
         this.setQuestion_type(Question_type);
         this.setQuestion_answer(Question_answer);
-        this.setQuestion_options(Question_options);
     }
+    
+    // setters
+    abstract void setQuestion_title(String Question_title);
+    abstract void setQuestion_type(String Question_type);
+    abstract void setQuestion_answer(String Question_answer);
 
     // getters
-    public String getQuestion_title(){
-        return this.Question_title;
-    }
+    abstract String getQuestion_title();
+    abstract String getQuestion_type();
+    abstract String getQuestion_answer();
 
-    public String getQuestion_type(){
-        return this.Question_type;
+    public void displayQuestion(){
+        System.out.println("Question: " + this.getQuestion_title());
+        System.out.println("Type: " + this.getQuestion_type());
+        System.out.println("Answer: " + this.getQuestion_answer());
     }
-
-    public String getQuestion_answer(){
-        return this.Question_answer;
-    }
-
-    public String[] getQuestion_options(){
-        return this.Question_options;
-    }
-
-    public int getQuestion_numberOfOptions(){
-        return this.Question_numberOfOptions;
-    }
-
-    // setters
-    public void setQuestion_title(String Question_title){
-        this.Question_title = Question_title;
-    }
-
-    public void setQuestion_type(String Question_type){
-        this.Question_type = Question_type;
-    }
-
-    public void setQuestion_answer(String Question_answer){
-        this.Question_answer = Question_answer;
-    }
-
-    public void setQuestion_options(String[] Question_options){
-        for(int i = 0; i < this.Question_numberOfOptions; i++){
-            this.Question_options[i] = Question_options[i];
-        }
-    }
-
-    public void setQuestion_numberOfOptions(int Question_numberOfOptions){
-        this.Question_numberOfOptions = Question_numberOfOptions;
-    }
-
 }
