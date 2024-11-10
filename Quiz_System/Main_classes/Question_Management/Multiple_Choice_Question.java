@@ -1,4 +1,4 @@
-package Quiz_System.Main_classes;
+package Quiz_System.Main_classes.Question_Management;
 
 public class Multiple_Choice_Question extends Question{
     private String Question_title, Question_type, Question_answer;

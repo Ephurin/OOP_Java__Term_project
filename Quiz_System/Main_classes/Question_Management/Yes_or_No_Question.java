@@ -1,4 +1,4 @@
-package Quiz_System.Main_classes;
+package Quiz_System.Main_classes.Question_Management;
 
 public class Yes_or_No_Question {
     private String Question_title, Question_type, Question_answer, Question_option1 = "Yes", Question_option2 = "No";

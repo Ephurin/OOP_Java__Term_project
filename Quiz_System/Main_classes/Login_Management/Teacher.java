@@ -1,4 +1,4 @@
-package Quiz_System.Main_classes;
+package Quiz_System.Main_classes.Login_Management;
 
 public class Teacher extends User{
     private String school, subject;

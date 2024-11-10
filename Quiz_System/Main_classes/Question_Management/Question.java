@@ -1,4 +1,4 @@
-package Quiz_System.Main_classes;
+package Quiz_System.Main_classes.Question_Management;
 
 public abstract class Question{
     private String Question_title, Question_type, Question_answer;
@@ -22,9 +22,15 @@ public abstract class Question{
     abstract void setQuestion_answer(String Question_answer);
 
     // getters
-    abstract String getQuestion_title();
-    abstract String getQuestion_type();
-    abstract String getQuestion_answer();
+    public String getQuestion_title(){
+        return this.Question_title;
+    }
+    public String getQuestion_type(){
+        return this.Question_type;
+    }
+    public String getQuestion_answer(){
+        return this.Question_answer;
+    }
 
     public void displayQuestion(){
         System.out.println("Question: " + this.getQuestion_title());
