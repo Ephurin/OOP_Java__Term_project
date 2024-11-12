@@ -1,5 +1,7 @@
 package Quiz_System.Main_classes.Login_Management;
 
+import Quiz_System.Main_classes.Question_Management.Question;
+
 public class Teacher extends User{
     private String school, subject;
 
@@ -33,11 +35,11 @@ public class Teacher extends User{
     }
 
     // Teacher specific methods
-    public void createQuestion(){
+    public void createQuestion(Question question){
 
     }
 
-    public void deleteQuestion(){
+    public void deleteQuestion(Question question){
 
     }
 

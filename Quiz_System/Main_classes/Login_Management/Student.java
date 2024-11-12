@@ -1,6 +1,7 @@
 package Quiz_System.Main_classes.Login_Management;
 
 import Quiz_System.Main_classes.Question_Management.Multiple_Choice_Question;
+import Quiz_System.Main_classes.Question_Management.Question;
 import Quiz_System.Main_classes.Question_Management.Quiz;
 
 public class Student extends User{
@@ -37,7 +38,7 @@ public class Student extends User{
     }
 
     // Student specific methods
-    public void takeQuestion(Multiple_Choice_Question question){
+    public void takeQuestion(Question question){
 
     }
 
