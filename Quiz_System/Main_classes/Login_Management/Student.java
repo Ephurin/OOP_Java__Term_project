@@ -1,6 +1,5 @@
 package Quiz_System.Main_classes.Login_Management;
 
-import Quiz_System.Main_classes.Question_Management.Multiple_Choice_Question;
 import Quiz_System.Main_classes.Question_Management.Question;
 import Quiz_System.Main_classes.Question_Management.Quiz;
 
