@@ -120,6 +120,9 @@ public class FillBlankQuiz extends JFrame implements ActionListener {
     private JButton submitButton, nextButton;
     private JLabel resultLabel;
     private String correctAnswer;
+    private double mark;
+    private int true_ans = 0;
+    private int question_count = 0;
     private int currentQuestionId = 1;
     private String quizId;
     private Connection connection;
@@ -129,6 +132,14 @@ public class FillBlankQuiz extends JFrame implements ActionListener {
         initializeDatabase();
         initializeUI();
         loadQuestion(String.format("FB%02d", currentQuestionId));
+    }
+
+    public double getMark() {
+        return mark;
+    }
+
+    public void setMark(double mark) {
+        this.mark = mark;
     }
 
     private void initializeDatabase() {
@@ -202,13 +213,18 @@ public class FillBlankQuiz extends JFrame implements ActionListener {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
+                submitButton.setEnabled(true);
+                answerField.setEnabled(true);
                 questionLabel.setText(rs.getString("question"));
                 correctAnswer = rs.getString("answer");
                 answerField.setText("");
                 resultLabel.setText("");
+                question_count++;
                 nextButton.setEnabled(false);
             } else {
-                JOptionPane.showMessageDialog(this, "Quiz completed!");
+                setMark((double) true_ans / question_count * 10);
+                String massage = "Quiz completed!\n" + String.format("Result: %.2f", getMark());
+                JOptionPane.showMessageDialog(this, massage);
                 dispose();
                 new fillQuizSelectionScreen();
             }
@@ -233,6 +249,7 @@ public class FillBlankQuiz extends JFrame implements ActionListener {
             if (userAnswer.equalsIgnoreCase(correctAnswer)) {
                 resultLabel.setText("Correct! " + correctAnswer + " is the right answer!");
                 resultLabel.setForeground(new Color(0, 150, 0));
+                true_ans++;
             } else {
                 resultLabel.setText("Incorrect. The correct answer is " + correctAnswer + ".");
                 resultLabel.setForeground(Color.RED);

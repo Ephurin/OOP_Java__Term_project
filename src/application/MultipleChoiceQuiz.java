@@ -123,6 +123,9 @@ public class MultipleChoiceQuiz extends JFrame implements ActionListener {
     private ButtonGroup buttonGroup;
     private JLabel resultLabel;
     private String correctAnswer;
+    private double mark;
+    private int question_count = 0;
+    private int true_answer = 0;
     private int currentQuestionId = 1;
     private Connection connection;
     private String quizId;
@@ -132,6 +135,14 @@ public class MultipleChoiceQuiz extends JFrame implements ActionListener {
         initializeDatabase();
         initializeUI();
         loadQuestion(String.format("MC%02d", currentQuestionId));
+    }
+
+    public double getMark() {
+        return mark;
+    }
+
+    public void setMark(double mark) {
+        this.mark = mark;
     }
 
     private void initializeDatabase() {
@@ -212,18 +223,21 @@ public class MultipleChoiceQuiz extends JFrame implements ActionListener {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
+                submitButton.setEnabled(true);
                 questionLabel.setText(rs.getString("question"));
                 options[0].setText(rs.getString("op1"));
                 options[1].setText(rs.getString("op2"));
                 options[2].setText(rs.getString("op3"));
                 options[3].setText(rs.getString("op4"));
                 correctAnswer = rs.getString("key_question");
-
+                question_count++;
                 buttonGroup.clearSelection();
                 resultLabel.setText("");
                 nextButton.setEnabled(false);
             } else {
-                JOptionPane.showMessageDialog(this, "Quiz completed!");
+                setMark((double) true_answer / question_count * 10);
+                String massage = "Quiz completed!\n" + String.format("Result: %.2f", getMark());
+                JOptionPane.showMessageDialog(this, massage);
                 dispose();
                 new QuizSelectionScreen();
             }
@@ -257,6 +271,7 @@ public class MultipleChoiceQuiz extends JFrame implements ActionListener {
 
             if (selectedAnswer.equals(correctAnswer)) {
                 resultLabel.setText("Correct! Well done!");
+                true_answer++;
                 resultLabel.setForeground(new Color(0, 150, 0));
             } else {
                 resultLabel.setText("Incorrect. The correct answer is: " + correctAnswer);
