@@ -1,168 +1,165 @@
 package application;
 
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class MultipleChoice extends JFrame implements ActionListener {
-    JTextField op1, op2, op3, op4, questionID, question;
-    JButton save, clear;
-    public MultipleChoice(){
-        setTitle("MULTIPLE CHOICE");
-        setSize(900, 500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(null);
-        getContentPane().setBackground(Color.YELLOW);
-        // icon frame
-        ImageIcon iconTeacher = new ImageIcon("E:\\2024-2025\\quizmanagesystem\\src\\image\\option.png");
-        setIconImage(iconTeacher.getImage());
+    private static String input;
+    JButton addButton, clear;
+    JTextField quizIDField, idField, questionField, aField, bField, cField, dField, keyField;
+    DefaultTableModel model;
+    JFrame frame;
+    public MultipleChoice(String input) {
+        this.input = input;
+        frame = new JFrame("Multiple Choice") ;
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1000, 700);
+        frame.setLayout(null);
 
-        JLabel heading = new JLabel("ADD NEW QUESTION");
-        heading.setBounds(230, 20, 400, 45);
-        heading.setFont(new Font("SansSerif", Font.BOLD + Font.ITALIC, 30));
-        heading.setForeground(new Color(30, 144, 254));
-        ImageIcon icHeading = new ImageIcon("E:\\2024-2025\\quizmanagesystem\\src\\image\\customer-service.png");
-        heading.setIcon(icHeading);
-        add(heading);
-        //question id
-        JLabel q_id = new JLabel("Question ID");
-        q_id.setBounds(100, 100, 300, 20);
-        q_id.setFont(new Font("Arial", Font.BOLD, 18));
-        q_id.setForeground(new Color(Color.BITMASK));
-        add(q_id);
+        String[] columnNames = {"Quiz ID", "Question ID", "Question", "A", "B", "C", "D", "Key"};
+        Object[][] data = {
+                {"Q01","MC01", "How old are you", 18, 19, 20, 21, 21}
+        };
+        model = new DefaultTableModel(data, columnNames);
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(20, 20, 950, 200);
+        frame.add(scrollPane);
 
-        questionID = new JTextField();
-        questionID.setBounds(250, 100, 100, 25);
-        questionID.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(questionID);
-        // question
-        JLabel q = new JLabel("Question");
-        q.setBounds(100, 150, 300, 20);
-        q.setFont(new Font("Arial", Font.BOLD, 18));
-        q.setForeground(new Color(Color.BITMASK));
-        add(q);
+        // Panel nhập dữ liệu
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(null);
+        inputPanel.setBounds(20, 300, 950, 300);
+        //JTextField nhập dữ liệu
+        JLabel id = new JLabel("Question ID");
+        id.setBounds(0, 0  , 150, 20);
+        inputPanel.add(id);
+        idField = new JTextField(10);
+        idField.setBounds(200, 0, 100, 25);
+        inputPanel.add(idField);
 
-        question = new JTextField();
-        question.setBounds(250, 150, 300, 25);
-        question.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(question);
-        // dap an A
-        JLabel a = new JLabel("A.");
-        a.setBounds(200, 200, 300, 20);
-        a.setFont(new Font("Arial", Font.BOLD, 18));
-        a.setForeground(new Color(Color.BITMASK));
-        add(a);
+        JLabel question = new JLabel("Question");
+        question.setBounds(0, 30, 150, 20);
+        inputPanel.add(question);
+        questionField = new JTextField(30);
+        questionField.setBounds(200, 30, 300, 25);
+        inputPanel.add(questionField);
 
-        op1 = new JTextField();
-        op1.setBounds(250, 200, 300, 25);
-        op1.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(op1);
-        //dap an B
-        JLabel b = new JLabel("B.");
-        b.setBounds(200, 250, 300, 20);
-        b.setFont(new Font("Arial", Font.BOLD, 18));
-        b.setForeground(new Color(Color.BITMASK));
-        add(b);
+        JLabel a = new JLabel("Option A");
+        a.setBounds(0, 60, 150, 20);
+        inputPanel.add(a);
+        aField = new JTextField(10);
+        aField.setBounds(200, 60, 300, 25);
+        inputPanel.add(aField);
 
-        op2 = new JTextField();
-        op2.setBounds(250, 250, 300, 25);
-        op2.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(op2);
-        //dap an C
-        JLabel c = new JLabel("C.");
-        c.setBounds(200, 300, 300, 20);
-        c.setFont(new Font("Arial", Font.BOLD, 18));
-        c.setForeground(new Color(Color.BITMASK));
-        add(c);
+        JLabel b = new JLabel("Option B");
+        b.setBounds(0, 90, 150, 20);
+        inputPanel.add(b);
+        bField = new JTextField(10);
+        bField.setBounds(200, 90, 300, 25);
+        inputPanel.add(bField);
 
-        op3 = new JTextField();
-        op3.setBounds(250, 300, 300, 25);
-        op3.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(op3);
-        //dap an D
-        JLabel d = new JLabel("D.");
-        d.setBounds(200, 350, 300, 20);
-        d.setFont(new Font("Arial", Font.BOLD, 18));
-        d.setForeground(new Color(Color.BITMASK));
-        add(d);
+        JLabel c = new JLabel("Option C");
+        c.setBounds(0, 120, 150, 20);
+        inputPanel.add(c);
+        cField = new JTextField(10);
+        cField.setBounds(200, 120, 300, 25);
+        inputPanel.add(cField);
 
-        op4 = new JTextField();
-        op4.setBounds(250, 350, 300, 25);
-        op4.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        add(op4);
+        JLabel d = new JLabel("Option D");
+        d.setBounds(0, 150, 150, 20);
+        inputPanel.add(d);
+        dField = new JTextField(10);
+        dField.setBounds(200, 150, 300, 25);
+        inputPanel.add(dField);
 
-        //Button
-        save = new JButton("SAVE");
-        save .setBounds(100, 400, 120, 30);
-        save .setBackground(new Color(30, 144, 254));
-        save .setForeground(Color.WHITE);
-        save .setFont(new Font("Arial", Font.BOLD, 16)); // Chọn font Arial, kiểu chữ thường, cỡ 16
-        save .addActionListener(this);
-        ImageIcon icSave = new ImageIcon("E:\\2024-2025\\quizmanagesystem\\src\\image\\diskette.png");
-        save.setIcon(icSave);
-        add(save );
+        JLabel key = new JLabel("Your Answer");
+        key.setBounds(0, 180, 150, 20);
+        inputPanel.add(key);
+        keyField = new JTextField(10);
+        keyField.setBounds(200, 180, 300, 25);
+        inputPanel.add(keyField);
 
-        clear = new JButton("NEXT");
-        clear .setBounds(500, 400, 120, 30);
-        clear .setBackground(new Color(30, 144, 254));
-        clear .setForeground(Color.WHITE);
-        clear .setFont(new Font("Arial", Font.BOLD, 16)); // Chọn font Arial, kiểu chữ thường, cỡ 16
-        clear .addActionListener(this);
-        ImageIcon icClear = new ImageIcon("E:\\2024-2025\\quizmanagesystem\\src\\image\\data-cleaning_12177271 (1).png");
-        clear.setIcon(icClear);
-        add(clear );
+       /* JLabel quizID = new JLabel("Quiz ID");
+        quizID.setBounds(0, 210, 150, 20);
+        inputPanel.add(quizID);
+        quizIDField = new JTextField(10);
+        quizIDField.setBounds(200, 210, 300, 25);
+        inputPanel.add(quizIDField);*/
+        //JButton
+        addButton = new JButton("Add question");
+        addButton.setBounds(600, 60, 150, 20);
+        addButton.addActionListener(this);
+        inputPanel.add(addButton);
+        clear = new JButton("Clear");
+        clear.setBounds(600, 100, 150, 20);
+        clear.addActionListener(this);
+        inputPanel.add(clear);
+        // thêm các component vào inputPanel
 
-        setVisible(true);
+        //them inputPanel vào cửa sổ
+        frame.add(inputPanel);
+        frame.setVisible(true);
+
     }
-    public static void main(String[] args) {
-        new MultipleChoice();
+    public static void main(String[] args){
+        new MultipleChoice(input);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == save){
-            String qID = questionID.getText();
-            String q = question.getText();
-            String a = op1.getText();
-            String b = op2.getText();
-            String c1 = op3.getText();
-            String d = op4.getText();
-            String key1 = op1.getText();
-            try{
-                ConnectionDatabase cdb = new ConnectionDatabase();
-                String query = "insert into multiplechoice(mc_questionID, question, op1, op2, op3, op4, key_question)" +
-                        "values (?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement stmt = cdb.c.prepareStatement(query);
-                stmt.setString(1, qID);   // mc_questionID (giả sử là String)
-                stmt.setString(2, q);      // Câu hỏi
-                stmt.setString(3, a);      // Đáp án 1
-                stmt.setString(4, b);      // Đáp án 2
-                stmt.setString(5, c1);      // Đáp án 3
-                stmt.setString(6, d);      // Đáp án 4
-                stmt.setString(7, key1);// Đáp án đúng (key_question)
+        if(e.getSource() == addButton){
+            String qID = idField.getText();
+            String q = questionField.getText();
+            String a = aField.getText();
+            String b = bField.getText();
+            String c1 = cField.getText();
+            String d = dField.getText();
+            String key1 = keyField.getText();
+            String quizID = input;
+            if(!qID.isEmpty() && !q.isEmpty() && !a.isEmpty() && !b.isEmpty() && !c1.isEmpty() && !d.isEmpty() && !key1.isEmpty() && !quizID.isEmpty() ){
+                model.addRow(new Object[]{quizID,qID, q, a, b, c1, d, key1});
+                try{
+                    ConnectionDatabase cdb = new ConnectionDatabase();
+                    String query = "insert into multiplechoice(question_id, quiz_id, question_text, option_a, option_b, option_c, option_d, correct_answer)" +
+                            "values (?, ?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement stmt = cdb.c.prepareStatement(query);
+                    stmt.setString(1, qID);
+                    stmt.setString(2, quizID);// mc_questionID (giả sử là String)
+                    stmt.setString(3, q);      // Câu hỏi
+                    stmt.setString(4, a);      // Đáp án 1
+                    stmt.setString(5, b);      // Đáp án 2
+                    stmt.setString(6, c1);      // Đáp án 3
+                    stmt.setString(7, d);      // Đáp án 4
+                    stmt.setString(8, key1);// Đáp án đúng (key_question)
 
-                int rowsAffected = stmt.executeUpdate();
 
-                // Kiểm tra nếu có dòng dữ liệu bị thay đổi
-                if (rowsAffected > 0) {
-                    System.out.println("Đã thêm câu hỏi vào cơ sở dữ liệu thành công.");
-                } else {
-                    System.out.println("Không có dữ liệu được thêm.");
+                    int rowsAffected = stmt.executeUpdate();
+
+                    // Kiểm tra nếu có dòng dữ liệu bị thay đổi
+                    if (rowsAffected > 0) {
+                        System.out.println("Đã thêm câu hỏi vào cơ sở dữ liệu thành công.");
+                    } else {
+                        System.out.println("Không có dữ liệu được thêm.");
+                    }
+                } catch (Exception ae) {
+                    ae.printStackTrace();
                 }
-            } catch (Exception ae) {
-                ae.printStackTrace();
+            } else{
+                JOptionPane.showMessageDialog(frame, "Vui lòng nhập đầy đủ thông tin!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
             }
-        } else if (e.getSource() == clear) {
-            questionID.setText("");
-            question.setText("");
-            op1.setText("");
-            op2.setText("");
-            op3.setText("");
-            op4.setText("");
+        } else if(e.getSource() == clear){
+            idField.setText("");
+            questionField.setText("");
+            aField.setText("");
+            bField.setText("");
+            cField.setText("");
+            dField.setText("");
+            keyField.setText("");
+            quizIDField.setText("");
         }
-
     }
 }
